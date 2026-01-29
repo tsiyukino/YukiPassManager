@@ -4,27 +4,20 @@ A modern, secure password manager built with WPF and WPF UI 3.0.
 
 ## Features
 
-### ✅ Fixed Issues
-- **Proper Master Password Authentication** - Uses SHA-256 hashing for secure password verification
-- **WPF UI NavigationView** - Proper sidebar navigation with Home and Vault pages
-- **Category Management** - User-creatable categories with add/edit/delete functionality
-- **No Primary (Blue) Buttons** - Uses standard appearance throughout
-- **WPF UI MessageBox** - Replaced System.Windows.MessageBox with WPF UI dialogs
-
-### 🔐 Security Features
+### Security Features
 - AES-256 encryption for vault data
 - SHA-256 password hashing
 - Encrypted file storage
 - Password generator
 
-### 📁 Category System
+### Category System
 - Create unlimited categories
 - Add multiple entries per category
 - Category cards on homepage showing entry counts
 - Search and filter categories
 - Edit/delete categories
 
-### 📝 Entry Types
+### Entry Types
 1. **Password Entries**
    - Title, Username, Password
    - URL and Notes fields
@@ -38,7 +31,7 @@ A modern, secure password manager built with WPF and WPF UI 3.0.
    - Card Number, Holder Name
    - Expiry Date and CVV
 
-### 🎨 User Interface
+### User Interface
 - Modern WPF UI 3.0 design
 - Dark theme support
 - NavigationView sidebar
@@ -56,7 +49,7 @@ A modern, secure password manager built with WPF and WPF UI 3.0.
 
 ### Building
 ```bash
-cd Yuki-Manager-New
+cd Yuki-Manager
 dotnet restore
 dotnet build
 dotnet run
@@ -113,8 +106,8 @@ Yuki-Manager-New/
 ### Entry Management
 - **Add Entry**: Select category, click "Add Entry"
 - **View Entry**: Double-click entry in list
-- **Edit Entry**: Click "Edit" button on entry row
-- **Delete Entry**: Click "Delete" button on entry row
+- **Edit Entry**: Right click the card then click "Edit" button
+- **Delete Entry**: Right click the card then click "Delete" button
 - **Search**: Use search box to filter entries by title/username
 
 ## Security Notes
@@ -136,15 +129,15 @@ MIT License - Feel free to use and modify.
 
 ## Changelog
 
-### Version 2.0 (Current)
-- ✅ Fixed master password authentication bug
-- ✅ Implemented WPF UI NavigationView sidebar
-- ✅ Added category management system
-- ✅ Created homepage with category cards
-- ✅ Replaced MessageBox with WPF UI dialogs
-- ✅ Removed primary button appearance
-- ✅ Added search functionality
-- ✅ Improved UI/UX throughout
+### Version 1.0 (Current)
+- Fixed master password authentication bug
+- Implemented WPF UI NavigationView sidebar
+- Added category management system
+- Created homepage with category cards
+- Replaced MessageBox with WPF UI dialogs
+- Removed primary button appearance
+- Added search functionality
+- Improved UI/UX throughout
 
-### Version 1.0
+### Version 0.1
 - Initial release with basic vault functionality
