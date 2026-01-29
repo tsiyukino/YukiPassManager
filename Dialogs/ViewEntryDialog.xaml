@@ -1,0 +1,254 @@
+<ui:FluentWindow x:Class="YukiManager.Dialogs.ViewEntryDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        Title="Entry Details"
+        Height="600"
+        Width="500"
+        WindowStartupLocation="CenterOwner"
+        ExtendsContentIntoTitleBar="True"
+        WindowBackdropType="Mica"
+        ResizeMode="NoResize">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <ui:TitleBar Grid.Row="0" Title="View Entry"/>
+        
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="40,20">
+            <StackPanel>
+                <!-- Title -->
+                <TextBlock x:Name="EntryTitle"
+                          Text="Entry Title"
+                          FontSize="24"
+                          FontWeight="Bold"
+                          Margin="0,0,0,8"/>
+                
+                <TextBlock x:Name="TypeText"
+                          Text="Password"
+                          FontSize="14"
+                          Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                          Margin="0,0,0,24"/>
+                
+                <!-- Username -->
+                <Grid x:Name="UsernameRow" Visibility="Collapsed" Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Username / Email" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                  Margin="0,0,0,4"/>
+                        <TextBlock x:Name="UsernameText"
+                                  Text="-"
+                                  FontSize="14"
+                                  TextWrapping="Wrap"/>
+                    </StackPanel>
+                    
+                    <ui:Button Grid.Column="1"
+                              Content="Copy"
+                              Appearance="Secondary"
+                              VerticalAlignment="Bottom"
+                              Tag="{Binding ElementName=UsernameText, Path=Text}"
+                              Click="CopyButton_Click">
+                        <ui:Button.Icon>
+                            <ui:SymbolIcon Symbol="Copy24"/>
+                        </ui:Button.Icon>
+                    </ui:Button>
+                </Grid>
+                
+                <!-- Password -->
+                <Grid x:Name="PasswordRow" Visibility="Collapsed" Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Password" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                  Margin="0,0,0,4"/>
+                        <TextBlock x:Name="PasswordText"
+                                  Text="-"
+                                  FontSize="14"
+                                  FontFamily="Consolas"
+                                  TextWrapping="Wrap"/>
+                    </StackPanel>
+                    
+                    <ui:Button Grid.Column="1"
+                              Content="Copy"
+                              Appearance="Secondary"
+                              VerticalAlignment="Bottom"
+                              Tag="{Binding ElementName=PasswordText, Path=Text}"
+                              Click="CopyButton_Click">
+                        <ui:Button.Icon>
+                            <ui:SymbolIcon Symbol="Copy24"/>
+                        </ui:Button.Icon>
+                    </ui:Button>
+                </Grid>
+                
+                <!-- URL -->
+                <Grid x:Name="UrlRow" Visibility="Collapsed" Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Website URL" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                  Margin="0,0,0,4"/>
+                        <TextBlock x:Name="UrlText"
+                                  Text="-"
+                                  FontSize="14"
+                                  TextWrapping="Wrap"/>
+                    </StackPanel>
+                    
+                    <ui:Button Grid.Column="1"
+                              Content="Copy"
+                              Appearance="Secondary"
+                              VerticalAlignment="Bottom"
+                              Tag="{Binding ElementName=UrlText, Path=Text}"
+                              Click="CopyButton_Click">
+                        <ui:Button.Icon>
+                            <ui:SymbolIcon Symbol="Copy24"/>
+                        </ui:Button.Icon>
+                    </ui:Button>
+                </Grid>
+                
+                <!-- Card Number -->
+                <Grid x:Name="CardNumberRow" Visibility="Collapsed" Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Card Number" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                  Margin="0,0,0,4"/>
+                        <TextBlock x:Name="CardNumberText"
+                                  Text="-"
+                                  FontSize="14"
+                                  FontFamily="Consolas"/>
+                    </StackPanel>
+                    
+                    <ui:Button Grid.Column="1"
+                              Content="Copy"
+                              Appearance="Secondary"
+                              VerticalAlignment="Bottom"
+                              Tag="{Binding ElementName=CardNumberText, Path=Text}"
+                              Click="CopyButton_Click">
+                        <ui:Button.Icon>
+                            <ui:SymbolIcon Symbol="Copy24"/>
+                        </ui:Button.Icon>
+                    </ui:Button>
+                </Grid>
+                
+                <!-- Card Holder -->
+                <StackPanel x:Name="CardHolderRow" Visibility="Collapsed" Margin="0,0,0,16">
+                    <TextBlock Text="Cardholder Name" 
+                              FontSize="12"
+                              Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                              Margin="0,0,0,4"/>
+                    <TextBlock x:Name="CardHolderText"
+                              Text="-"
+                              FontSize="14"/>
+                </StackPanel>
+                
+                <!-- Expiry & CVV -->
+                <Grid x:Name="ExpiryRow" Visibility="Collapsed" Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                        <TextBlock Text="Expiry Date" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                  Margin="0,0,0,4"/>
+                        <TextBlock x:Name="ExpiryText"
+                                  Text="-"
+                                  FontSize="14"
+                                  FontFamily="Consolas"/>
+                    </StackPanel>
+                    
+                    <StackPanel x:Name="CVVRow" Grid.Column="1" Margin="8,0,0,0">
+                        <TextBlock Text="CVV" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                  Margin="0,0,0,4"/>
+                        <TextBlock x:Name="CVVText"
+                                  Text="-"
+                                  FontSize="14"
+                                  FontFamily="Consolas"/>
+                    </StackPanel>
+                </Grid>
+                
+                <!-- Notes -->
+                <StackPanel x:Name="NotesRow" Visibility="Collapsed" Margin="0,0,0,16">
+                    <TextBlock Text="Notes" 
+                              FontSize="12"
+                              Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                              Margin="0,0,0,4"/>
+                    <TextBlock x:Name="NotesText"
+                              Text="-"
+                              FontSize="14"
+                              TextWrapping="Wrap"/>
+                </StackPanel>
+                
+                <!-- Metadata -->
+                <Separator Margin="0,8,0,16"/>
+                
+                <Grid Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Created" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                  Margin="0,0,0,4"/>
+                        <TextBlock x:Name="CreatedText"
+                                  Text="-"
+                                  FontSize="13"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Modified" 
+                                  FontSize="12"
+                                  Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                  Margin="0,0,0,4"/>
+                        <TextBlock x:Name="ModifiedText"
+                                  Text="-"
+                                  FontSize="13"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <!-- Close Button -->
+        <Border Grid.Row="2" 
+                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                Padding="40,16">
+            <ui:Button Content="Close"
+                      Appearance="Primary"
+                      Padding="24,10"
+                      HorizontalAlignment="Right"
+                      Click="CloseButton_Click"/>
+        </Border>
+    </Grid>
+</ui:FluentWindow>

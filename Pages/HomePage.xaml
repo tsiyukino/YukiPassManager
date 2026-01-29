@@ -1,0 +1,81 @@
+<Page x:Class="YukiManager.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      Title="Home"
+      Background="Transparent">
+
+    <ScrollViewer>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Actions -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+                <ui:Button Content="Add Category" 
+                          Icon="{ui:SymbolIcon Add24}"
+                          Click="AddCategory_Click"
+                          Margin="0,0,10,0"/>
+                <ui:Button x:Name="EditCategoryButton"
+                          Content="Edit" 
+                          Icon="{ui:SymbolIcon Edit24}"
+                          Appearance="Secondary"
+                          Click="EditSelectedCategory_Click"
+                          IsEnabled="False"
+                          Margin="0,0,10,0"/>
+                <ui:Button x:Name="DeleteCategoryButton"
+                          Content="Delete" 
+                          Icon="{ui:SymbolIcon Delete24}"
+                          Appearance="Secondary"
+                          Click="DeleteSelectedCategory_Click"
+                          IsEnabled="False"
+                          Margin="0,0,10,0"/>
+                <ui:TextBox x:Name="SearchBox" 
+                           PlaceholderText="Search categories..."
+                           MinWidth="300"
+                           TextChanged="SearchBox_TextChanged"/>
+            </StackPanel>
+
+            <!-- Categories Grid -->
+            <ItemsControl x:Name="CategoriesItemsControl" Grid.Row="1">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ui:CardAction Margin="0,0,15,15" 
+                                      Width="280" 
+                                      Height="160"
+                                      Click="CategoryCard_Click"
+                                      MouseRightButtonUp="CategoryCard_RightClick"
+                                      Tag="{Binding Id}">
+                            <Grid>
+                                <!-- Centered content -->
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,10,5">
+                                    <Viewbox Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <ui:SymbolIcon Symbol="Folder24"/>
+                                    </Viewbox>
+                                    <TextBlock Text="{Binding Name}" 
+                                              FontSize="20" 
+                                              FontWeight="SemiBold"
+                                              HorizontalAlignment="Center"/>
+                                    <TextBlock HorizontalAlignment="Center"
+                                              FontSize="12"
+                                              Margin="0,5,0,0"
+                                              Opacity="0.5">
+                                        <Run Text="{Binding Entries.Count, Mode=OneWay}"/>
+                                        <Run Text="entries"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </ui:CardAction>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </ScrollViewer>
+</Page>

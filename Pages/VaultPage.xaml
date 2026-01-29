@@ -1,0 +1,100 @@
+<Page x:Class="YukiManager.Pages.VaultPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      Title="Vault"
+      Background="Transparent">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Actions -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+            <ui:Button Content="← Back" 
+                      Appearance="Secondary"
+                      Click="BackButton_Click"
+                      Margin="0,0,10,0"/>
+            <ui:Button Content="Add Entry" 
+                      Icon="{ui:SymbolIcon Add24}"
+                      Click="AddEntry_Click"
+                      Margin="0,0,10,0"/>
+            <ui:TextBox x:Name="SearchBox" 
+                       PlaceholderText="Search entries..."
+                       MinWidth="300"
+                       TextChanged="SearchBox_TextChanged"/>
+        </StackPanel>
+
+        <!-- Entries List -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="EntriesListControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ui:Card Margin="0,0,0,12" Padding="20,16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <!-- Icon -->
+                                <ui:SymbolIcon Grid.Column="0"
+                                              Symbol="Key24"
+                                              FontSize="32"
+                                              Margin="0,0,16,0"
+                                              VerticalAlignment="Center"
+                                              Foreground="{DynamicResource SystemAccentColorSecondaryBrush}"/>
+                                
+                                <!-- Entry Info -->
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Title}"
+                                              FontSize="16"
+                                              FontWeight="SemiBold"
+                                              Margin="0,0,0,4"/>
+                                    <TextBlock Text="{Binding Username}"
+                                              FontSize="13"
+                                              Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                                </StackPanel>
+                                
+                                <!-- Actions -->
+                                <StackPanel Grid.Column="2"
+                                           Orientation="Horizontal"
+                                           VerticalAlignment="Center">
+                                    <ui:Button Appearance="Secondary"
+                                              Margin="0,0,8,0"
+                                              ToolTip="View Details"
+                                              Click="ViewEntry_Click"
+                                              Tag="{Binding Id}">
+                                        <ui:Button.Icon>
+                                            <ui:SymbolIcon Symbol="Eye24"/>
+                                        </ui:Button.Icon>
+                                    </ui:Button>
+                                    <ui:Button Appearance="Secondary"
+                                              Margin="0,0,8,0"
+                                              ToolTip="Edit"
+                                              Click="EditEntry_Click"
+                                              Tag="{Binding Id}">
+                                        <ui:Button.Icon>
+                                            <ui:SymbolIcon Symbol="Edit24"/>
+                                        </ui:Button.Icon>
+                                    </ui:Button>
+                                    <ui:Button Appearance="Danger"
+                                              ToolTip="Delete"
+                                              Click="DeleteEntry_Click"
+                                              Tag="{Binding Id}">
+                                        <ui:Button.Icon>
+                                            <ui:SymbolIcon Symbol="Delete24"/>
+                                        </ui:Button.Icon>
+                                    </ui:Button>
+                                </StackPanel>
+                            </Grid>
+                        </ui:Card>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>
